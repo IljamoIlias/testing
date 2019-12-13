@@ -1,0 +1,16 @@
+{
+  "Name": "TestProduct",
+  "NutritionFacts": {
+    "KCalPerServing": 717,
+    "KJPerServing": 777,
+    "FatsPerServing": 33.9,
+    "SatsPerServing": 24.0,
+    "CarbsPerServing": 48.9,
+    "ProteinsPerServing": 52.5,
+    "KCalPer100": 717,
+    "KJPer100": 700,
+    "FatsPer100": 33.9,
+    "CarbsPer100": 48.9,
+    "ProteinsPer100": 52.5
+  }
+}

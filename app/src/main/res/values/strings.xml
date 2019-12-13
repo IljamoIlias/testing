@@ -1,0 +1,11 @@
+<resources>
+
+    <string name="app_name">MyTestApp</string>
+
+    <string name="two_arguments">%s --- %s</string>
+    <string name="nutrition_fact_caloric">%1$,d kJ\n%2$,d kcal</string>
+    <string name="nutrition_fact_grams">%1$.1f g</string>
+    <string name="nutrition_fact_salt">%1$.2f g</string>
+    <string name="nutrition_fact_percent">%1$.0f %%</string>
+
+</resources>
