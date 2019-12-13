@@ -2,9 +2,9 @@ package com.example.mytestapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.plusAssign
 import com.squareup.moshi.Moshi
 import kotlinx.android.synthetic.main.activity_main.*
+import okio.Okio
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,15 +13,19 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
-        val testProduct = mockParser.parseRawFile(
-            resources,
-            R.raw.product,
-            Moshi.Builder().build().adapter(TestProduct::class.java)
-        )
+        var counter = 0
+        val testProduct = Moshi.Builder().build().adapter(TestProduct::class.java)
+            .fromJson(Okio.buffer(Okio.source(resources.openRawResource(R.raw.product))))
+            ?: throw AssertionError()
+        val nutritionFacts = testProduct.NutritionFacts ?: throw  IllegalArgumentException()
 
-        name.text = testProduct.Name
-        name.setOnClickListener {
-            layout += MyTestView(this, testProduct)
+        click.setOnClickListener {
+            result.text =
+                if (nutritionFacts.KCalPer100 != null && nutritionFacts.KJPer100 != null) {
+                    nutritionFacts.getValue(resources, 0, true)
+                } else {
+                    "Result. Attempt: ${counter++}"
+                }
         }
     }
 
