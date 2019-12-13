@@ -1,7 +1,6 @@
 plugins {
     id("com.android.application")
     kotlin("android")
-    kotlin("kapt")
 }
 
 android {
@@ -33,7 +32,6 @@ android {
 
 dependencies {
     implementation(kotlin("stdlib-jdk7", "1.3.61"))
-    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.9.2")
     implementation("com.squareup.moshi:moshi:1.9.2")
     implementation("androidx.annotation:annotation:1.1.0")
 }
