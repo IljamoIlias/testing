@@ -11,10 +11,9 @@ class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val testProduct = Moshi.Builder().build().adapter(TestProduct::class.java)
-            .fromJson(Okio.buffer(Okio.source(resources.openRawResource(R.raw.product))))
+        val nutritionFacts = Moshi.Builder().build().adapter(NutritionFacts::class.java)
+            .fromJson(Okio.buffer(Okio.source(resources.openRawResource(R.raw.nutrition_facts))))
             ?: throw AssertionError()
-        val nutritionFacts = testProduct.NutritionFacts ?: throw  IllegalArgumentException()
 
         if (nutritionFacts.KCalPer100 != null && nutritionFacts.KJPer100 != null) {
             Log.e("Tag", nutritionFacts.getValue(resources, 0, true))
